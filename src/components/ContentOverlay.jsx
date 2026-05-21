@@ -6,7 +6,7 @@ const projectsData = [
     id: 1,
     title: 'RESUMATCH AI',
     stack: 'React.js · Flask · Python',
-    desc: 'An algorithmic resume-matching platform that analyzes keywords against job descriptions to optimize ATS compatibility.',
+    desc: 'An AI-powered ATS (Applicant Tracking System) resume analyzer that parses keyword density, semantic intent, and formatting parameters against target job descriptions to maximize recruitment matching rates.',
     link: 'https://github.com/sharancreates/resumatch',
     year: '2026'
   },
@@ -14,7 +14,7 @@ const projectsData = [
     id: 2,
     title: 'AROGYA HMS',
     stack: 'Flask · SQLite · Jinja2',
-    desc: 'A centralized hospital management portal streamlining patient records and complex administrative workflows.',
+    desc: 'A centralized healthcare enterprise resource planning (ERP) portal built to digitize electronic health records (EHR), streamline physician-patient intake flows, and secure clinical transactions.',
     link: 'https://github.com/sharancreates/hospital-management-system',
     year: '2026'
   },
@@ -22,7 +22,7 @@ const projectsData = [
     id: 3,
     title: 'DIGITAL SAKSHYA',
     stack: 'Conceptual · SDG 16',
-    desc: 'A digital platform conceptualized for legal awareness and civic engagement.',
+    desc: 'A civic-tech platform designed to democratize legal awareness, promote civic engagement, and advance UN SDG 16 goals through interactive legal literacy tools.',
     link: '#',
     year: '2025'
   }
@@ -33,7 +33,7 @@ const blogsData = [
     id: 1,
     title: 'THE FUTURE OF QUANTUM ML',
     stack: 'Machine Learning',
-    desc: 'Exploring hybrid quantum models for advanced medical analysis and the future of healthcare technology.',
+    desc: 'Research exploration into hybrid quantum-classical neural networks (QNN) for MRI and CT medical image segmentation and diagnostics.',
     link: '#',
     year: '2026'
   },
@@ -41,7 +41,7 @@ const blogsData = [
     id: 2,
     title: 'SCALING MERN APPS',
     stack: 'Web Development',
-    desc: 'A deep dive into architecting and deploying scalable full-stack applications.',
+    desc: 'A comprehensive guide on state management, microservices routing, database indexing, and Docker containerization for high-traffic Node.js backend architectures.',
     link: '#',
     year: '2025'
   }
@@ -52,7 +52,7 @@ const codepenData = [
     id: 1,
     title: 'GSAP SCROLL EFFECTS',
     stack: 'Animation',
-    desc: 'A collection of smooth, cinematic scroll triggers built with GSAP and React.',
+    desc: 'A library of reusable React hooks for smooth, hardware-accelerated scroll animations, parallax, and text triggers.',
     link: '#',
     year: '2025'
   },
@@ -60,7 +60,7 @@ const codepenData = [
     id: 2,
     title: 'CSS GLASSMORPHISM',
     stack: 'UI/UX',
-    desc: 'Experimental UI components using modern CSS backdrop-filter techniques.',
+    desc: 'Experimental web components implementing fluid CSS backdrop filters, glassmorphic card overlays, and dynamic lighting effects.',
     link: '#',
     year: '2024'
   }
@@ -117,11 +117,10 @@ export default function ContentOverlay({ activeSection, onClose }) {
             <div className="section-container">
               <h2 className="overlay-anim section-title">ABOUT ME</h2>
               <p className="overlay-anim bio-large">
-                I am an Aspiring Technologist with a unique blend of full-stack engineering skills and research interests
-                in Quantum Computing and Data Science. 
+                I am a Full-Stack Software Engineer and Quantum Machine Learning Researcher bridging the gap between high-performance web applications and planetary computing.
               </p>
               <p className="overlay-anim bio-medium">
-                Proven track record of developing functional applications while simultaneously exploring hybrid quantum models for medical analysis. Dedicated to leveraging cutting-edge technology to build impactful solutions in healthcare and social justice.
+                With expertise in React, Flask, Node.js, and Python, I design scalable software systems while researching hybrid quantum algorithms for advanced healthcare diagnostics. Committed to building human-centric solutions, I translate complex tech stacks into real-world impact across medicine and civic justice.
               </p>
               <div className="overlay-anim grid-2">
                 <div>
