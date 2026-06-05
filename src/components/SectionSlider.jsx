@@ -7,9 +7,9 @@ const sections = [
     num: '01',
     title: 'WHO AM I',
     subtitle: 'ABOUT ME',
-    desc: 'Aspiring Technologist blending full-stack engineering with quantum computing research.',
+    desc: 'I build production-grade web apps, integrate AI/ML systems, and consult for startups that need to ship fast.',
     actionText: 'Read Full Bio',
-    image: '/slides/about.png',
+    image: '/slides/about.webp',
     color: '#0a1a3a',
   },
   {
@@ -19,7 +19,7 @@ const sections = [
     subtitle: 'SKILLS & CERTIFICATIONS',
     desc: 'Proficient in modern web technologies, full-stack architectures, and cloud computing.',
     actionText: 'View Technical Skills',
-    image: '/slides/arogya.png',
+    image: '/slides/arogya.webp',
     color: '#0a3a2a',
   },
   {
@@ -29,7 +29,7 @@ const sections = [
     subtitle: 'FEATURED PROJECTS',
     desc: 'Production-grade applications spanning healthcare management to ATS resume optimization.',
     actionText: 'Explore Projects',
-    image: '/slides/resumatch.png',
+    image: '/slides/resumatch.webp',
     color: '#2d1b69',
   },
   {
@@ -39,27 +39,17 @@ const sections = [
     subtitle: 'WRITING & THOUGHTS',
     desc: 'Deep dives into web development, software engineering, and technical explorations.',
     actionText: 'Read Publications',
-    image: '/slides/blogs.png',
-    color: '#4a2511',
-  },
-  {
-    id: 'codepen',
-    num: '05',
-    title: 'EXPERIMENTS',
-    subtitle: 'CODEPEN & UI/UX',
-    desc: 'Creative coding snippets, micro-animations, and interactive UI experiments.',
-    actionText: 'View Experiments',
-    image: '/slides/codepen.png',
-    color: '#0d3b4a',
+    image: '/slides/blogs.webp',
+    color: '#3a1a4a',
   },
   {
     id: 'contact',
-    num: '06',
-    title: "LET'S CONNECT",
-    subtitle: 'CONTACT ME',
-    desc: 'Dedicated to leveraging cutting-edge technology to build impactful solutions.',
-    actionText: 'Get in Touch',
-    image: '/slides/mern.png',
+    num: '05',
+    title: "START A PROJECT",
+    subtitle: 'LET\'S DISCUSS YOUR PROJECT',
+    desc: 'Ready to bring your software to life without agency overhead? Let\'s map out the build.',
+    actionText: 'Discuss Your Build',
+    image: '/slides/mern.webp',
     color: '#3a0a1a',
   },
 ]
@@ -68,6 +58,7 @@ const SectionSlider = forwardRef(function SectionSlider({ currentSlide, setCurre
   const containerRef = useRef()
   const isAnimating = useRef(false)
   const touchStartY = useRef(0)
+  const hasAnimated = useRef(false)
 
   useImperativeHandle(ref, () => ({
     goTo
@@ -151,7 +142,8 @@ const SectionSlider = forwardRef(function SectionSlider({ currentSlide, setCurre
   }, [currentSlide, goTo, isOverlayOpen])
 
   useEffect(() => {
-    if (!loaded) return
+    if (!loaded || hasAnimated.current) return
+    hasAnimated.current = true
     const firstSlide = containerRef.current.querySelector('.slide[data-index="0"]')
     if (!firstSlide) return
     gsap.set(firstSlide, { visibility: 'visible', zIndex: 2 })
@@ -169,25 +161,29 @@ const SectionSlider = forwardRef(function SectionSlider({ currentSlide, setCurre
   return (
     <div ref={containerRef} className="slider-container">
       {sections.map((s, i) => (
-        <div key={s.id} className="slide" data-index={i} style={{ visibility: i === 0 && !loaded ? 'visible' : 'hidden' }}>
-          <div className="slide-img-wrap">
-            <div className="slide-img" style={{ backgroundImage: `url(${s.image})` }}>
+        <div key={s.id} className="slide" data-index={i} style={{ visibility: i === 0 ? 'visible' : 'hidden' }}>
+          <div className="slide-img-wrap" style={i === 0 && !loaded ? { clipPath: 'inset(50% 25% 50% 25%)' } : undefined}>
+            <div className="slide-img" style={{ 
+              backgroundImage: `url(${s.image})`,
+              transform: i === 0 && !loaded ? 'scale(1.5)' : undefined
+            }}>
               <div className="slide-img-overlay" style={{ background: `radial-gradient(ellipse at center, ${s.color}88 0%, #0a0a0aee 70%)` }} />
             </div>
           </div>
 
           <div className="slide-content">
             <div className="slide-meta-left">
-              <span className="slide-text-anim slide-num">{s.num}</span>
+              <span className="slide-text-anim slide-num" style={i === 0 && !loaded ? { opacity: 0, transform: 'translateY(60px)' } : undefined}>{s.num}</span>
             </div>
 
             <div className="slide-center">
-              <h2 className="slide-text-anim slide-title">{s.title}</h2>
-              <p className="slide-text-anim slide-stack">{s.subtitle}</p>
-              <p className="slide-text-anim slide-desc">{s.desc}</p>
+              <h2 className="slide-text-anim slide-title" style={i === 0 && !loaded ? { opacity: 0, transform: 'translateY(60px)' } : undefined}>{s.title}</h2>
+              <p className="slide-text-anim slide-stack" style={i === 0 && !loaded ? { opacity: 0, transform: 'translateY(60px)' } : undefined}>{s.subtitle}</p>
+              <p className="slide-text-anim slide-desc" style={i === 0 && !loaded ? { opacity: 0, transform: 'translateY(60px)' } : undefined}>{s.desc}</p>
               <button 
                 className="slide-text-anim slide-link clickable"
                 onClick={() => onOpenOverlay(s.id)}
+                style={i === 0 && !loaded ? { opacity: 0, transform: 'translateY(60px)' } : undefined}
               >
                 {s.actionText}
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -218,7 +214,7 @@ const SectionSlider = forwardRef(function SectionSlider({ currentSlide, setCurre
         .slide-center{text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px;max-width:800px;margin:0 auto}
         .slide-title{font-family:var(--font-display);font-size:clamp(3rem,9vw,8rem);font-weight:900;line-height:.9;letter-spacing:-.03em;text-transform:uppercase;color:var(--white)}
         .slide-stack{font-size:.85rem;font-weight:400;color:var(--white-dim);letter-spacing:.15em;text-transform:uppercase}
-        .slide-desc{font-size:.92rem;color:var(--white-dim);line-height:1.8;max-width:520px}
+        .slide-desc{font-size:.92rem;color:var(--white-dim);line-height:1.8;max-width:580px}
         .slide-link{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-size:.85rem;font-weight:600;color:var(--white);letter-spacing:.08em;text-transform:uppercase;padding:12px 0;transition:gap .3s var(--ease);border-bottom:1px solid var(--white-muted);background:none;border-left:none;border-right:none;border-top:none;cursor:pointer}
         .slide-link:hover{gap:14px;border-color:var(--white)}
 

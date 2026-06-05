@@ -24,6 +24,10 @@ export default function FixedFooter({ currentSlide, totalSlides, onDotClick, loa
           />
         ))}
       </div>
+      <div className="ftr-item ftr-status">
+        <span className="status-dot" />
+        Available for Projects
+      </div>
       <div className="ftr-item ftr-socials">
         <a href="https://linkedin.com/in/sharanya-nagar" target="_blank" rel="noreferrer">LinkedIn</a>
         <a href="https://github.com/sharancreates" target="_blank" rel="noreferrer">GitHub</a>
@@ -33,15 +37,19 @@ export default function FixedFooter({ currentSlide, totalSlides, onDotClick, loa
         .site-footer-fixed{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:32px 48px;pointer-events:none}
         .site-footer-fixed>*{pointer-events:auto}
         .ftr-dots{display:flex;gap:10px;align-items:center}
-        .ftr-dot{width:8px;height:8px;border-radius:50%;background:var(--white-muted);border:none;padding:0;transition:all .4s var(--ease);cursor:pointer}
+        .ftr-dot{width:8px;height:8px;border-radius:50%;background:var(--white-muted);border:none;padding:0;transition:all .4s var(--ease);cursor:pointer;position:relative}
+        .ftr-dot::before{content:'';position:absolute;inset:-8px;border-radius:50%}
         .ftr-dot.active{background:var(--white);transform:scale(1.3)}
         .ftr-dot:hover{background:var(--white-dim)}
+        .ftr-status{display:flex;align-items:center;gap:8px;font-size:.75rem;color:var(--white-dim);letter-spacing:.05em;font-family:var(--font-display)}
+        .status-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse 2s ease-in-out infinite;flex-shrink:0}
+        @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,197,94,.4)}50%{opacity:.8;box-shadow:0 0 0 6px rgba(34,197,94,0)}}
         .ftr-socials{display:flex;gap:36px}
         .ftr-socials a{font-size:.82rem;font-weight:400;color:var(--white-dim);letter-spacing:.03em;transition:color .3s;position:relative}
         .ftr-socials a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--white);transition:width .3s var(--ease)}
         .ftr-socials a:hover{color:var(--white)}
         .ftr-socials a:hover::after{width:100%}
-        @media(max-width:640px){.site-footer-fixed{padding:20px 24px}.ftr-socials{gap:20px}.ftr-socials a{font-size:.75rem}}
+        @media(max-width:640px){.site-footer-fixed{padding:20px 24px}.ftr-socials{gap:20px}.ftr-socials a{font-size:.75rem}.ftr-status{display:none}}
       `}</style>
     </footer>
   )

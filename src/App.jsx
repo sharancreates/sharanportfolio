@@ -6,7 +6,7 @@ import SectionSlider from './components/SectionSlider'
 import FixedFooter from './components/FixedFooter'
 import ContentOverlay from './components/ContentOverlay'
 
-const TOTAL_SLIDES = 6
+const TOTAL_SLIDES = 5
 
 export default function App() {
   const [loaded, setLoaded] = useState(false)
@@ -36,7 +36,7 @@ export default function App() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '')
-      const validSections = ['about', 'skills', 'projects', 'blogs', 'codepen', 'contact']
+      const validSections = ['about', 'skills', 'projects', 'blogs', 'contact']
       if (validSections.includes(hash)) {
         setActiveOverlay(hash)
         const slideIndex = validSections.indexOf(hash)
@@ -66,7 +66,6 @@ export default function App() {
         'Technical Expertise',
         'Featured Projects',
         'Technical Articles',
-        'UI/UX Experiments',
         "Let's Connect"
       ]
       document.title = `Sharanya Nagar — ${slideTitles[currentSlide] || 'Full-Stack Developer'}`
