@@ -5,8 +5,8 @@ const projectsData = [
   {
     id: 1,
     title: 'RESUMATCH AI',
-    stack: 'React.js · Flask · Python',
-    desc: 'An AI-powered ATS (Applicant Tracking System) resume analyzer that parses keyword density, semantic intent, and formatting parameters against target job descriptions to maximize recruitment matching rates. Built a hybrid lexical-semantic parsing engine that reduced parsing latency by 70% and achieved a 30% average improvement in candidate match accuracy across 150+ tested profiles.',
+    stack: 'React.js · Flask · Python · ONNX · Scikit-Learn',
+    desc: 'An AI-powered ATS resume analyzer that parses keyword density, semantic intent, and formatting parameters against job descriptions. Built a hybrid lexical-semantic parsing engine (40% keyword CountVectorizer + 60% all-MiniLM-L6-v2 sentence embeddings via ONNX Runtime) that cut inference latency by 70% and achieved a 30% candidate match improvement. Uses an OrderedDict-backed LRU caching layer.',
     link: 'https://github.com/sharancreates/resumatch',
     demo: 'https://resumatch-cm7x.onrender.com',
     year: '2026',
@@ -16,14 +16,36 @@ const projectsData = [
   {
     id: 2,
     title: 'AROGYA HMS',
-    stack: 'React 19 · Flask · Python',
-    desc: 'A secure, full-stack Hospital Management System built with React 19 and Flask, featuring healthcare interoperability through HL7 v2 and FHIR standards.',
+    stack: 'React 19 · Flask · PostgreSQL · Celery · Redis',
+    desc: 'A secure, interoperable Hospital Management System. Implemented an interoperability layer dynamically generating HL7 v2 ADT messages and FHIR R4 Patient resources. Decoupled heavy tasks (SMTP/PDF creation) to Celery/Redis, reducing reminder dispatch latency from 32s to 20ms. Eliminated SQL N+1 loading bottlenecks using SQLAlchemy joinedload to consolidate queries into O(1) scheduling checks.',
     link: 'https://github.com/sharancreates/hospital-management-system',
     medium: 'https://medium.com/@sharanyanagar/engineering-arogya-lessons-from-building-a-secure-healthcare-platform-ced0cf4ccca2',
     demo: 'https://arogya-hms-sharancreates.vercel.app/',
     year: '2026',
     status: 'deployed',
     image: '/slides/arogya.webp'
+  },
+  {
+    id: 3,
+    title: 'SELENE TRACKER',
+    stack: 'React.js · Flask · Web Crypto API · SQLite',
+    desc: 'A zero-knowledge menstrual health tracker. All calculations and encryption (AES-256-GCM via browser Web Crypto API) run client-side; the server stores only opaque ciphertext linked to anonymous cryptographically random UUIDs. Built a variance-aware prediction algorithm dynamically adapting confidence windows for cycle irregularity and PCOS patterns.',
+    link: 'https://github.com/sharancreates/selene',
+    demo: '#',
+    year: '2026',
+    status: 'progress',
+    image: '/slides/sakshya.webp'
+  },
+  {
+    id: 4,
+    title: 'AION CODE REVIEWER',
+    stack: 'FastAPI · React.js · PyTorch · Transformers',
+    desc: 'A Reinforcement Learning (RL) based automated code reviewer. Trained a fine-tuned language model with REINFORCE and Supervised Fine-Tuning (SFT) to optimize syntax styling, algorithmic efficiency, and security vulnerabilities. Features a custom AST-based code execution sandbox and a multi-objective reward policy.',
+    link: 'https://github.com/Wall-E-30/code-reviewer',
+    demo: '#',
+    year: '2026',
+    status: 'deployed',
+    image: '/slides/mern.webp'
   }
 ]
 
@@ -127,47 +149,47 @@ export default function ContentOverlay({ activeSection, onClose }) {
                 </div>
                 <div className="about-hero-text">
                   <p className="bio-large">
-                    I build AI-powered web apps solving healthcare & civic challenges.
+                    I engineer secure full-stack systems, performance-tuned database schemas, and intelligent ML pipelines.
                   </p>
                   <p className="bio-sub">
-                    I'm a full-stack developer who turns complex ideas into software that actually ships — on time, on budget, and built to scale.
+                    I'm a software engineering student specializing in AI-ML. I focus on building robust system architectures, optimizing database latency, and implementing high-efficiency machine learning integrations.
                   </p>
                 </div>
               </div>
 
               <div className="overlay-anim about-services">
-                <h3 className="sub-label">What I Build</h3>
+                <h3 className="sub-label">Core Capabilities</h3>
                 <div className="service-items">
                   <div className="service-item">
-                    <h4>Full-Stack Web Development</h4>
-                    <p>Production-grade React and Flask applications — from database architecture to polished UI — so you hire one engineer, not three.</p>
+                    <h4>Full-Stack Architecture</h4>
+                    <p>Production-ready applications utilizing React 19, Flask, Node.js, and PostgreSQL. Focused on clean system isolation, RESTful design, and responsive user experiences.</p>
                   </div>
                   <div className="service-item">
-                    <h4>AI/ML Integration</h4>
-                    <p>Custom scoring engines, NLP pipelines, and intelligent automation wired directly into your product — not bolted on as an afterthought.</p>
+                    <h4>AI/ML Systems Engineering</h4>
+                    <p>Integrating transformer-based models, fine-tuning LLMs with Reinforcement Learning (RL), and accelerating inference with ONNX Runtime on edge or cloud servers.</p>
                   </div>
                   <div className="service-item">
-                    <h4>Startup Consulting</h4>
-                    <p>From MVP architecture to deployment strategy, I help early-stage teams ship faster with leaner stacks and fewer regrets.</p>
+                    <h4>Performance & Scale Optimization</h4>
+                    <p>Alleviating database query bottlenecks using eager loading loaded SQL mappings, decoupling heavy computation to async workers (Celery/Redis), and optimizing server-side memory via bounded LRU caching.</p>
                   </div>
                 </div>
               </div>
 
               <div className="overlay-anim grid-2" style={{ marginTop: '60px' }}>
                 <div>
-                  <h3 className="sub-label">Industries</h3>
+                  <h3 className="sub-label">Focus Areas</h3>
                   <div className="skills-tags">
-                    {['Healthcare', 'Civic Tech', 'Startups'].map((s, i) => (
+                    {['Systems Design', 'Applied ML', 'Data Compliance', 'Information Security'].map((s, i) => (
                       <span key={i} className="skill-tag">{s}</span>
                     ))}
                   </div>
                 </div>
                 <div>
-                  <h3 className="sub-label">Why Hire Me</h3>
+                  <h3 className="sub-label">Engineering Rigor</h3>
                   <div className="differentiator-list">
-                    <p>→ Engineering rigor from <strong>Adani University</strong> (CSE, AI-ML) and <strong>IIT Madras</strong></p>
-                    <p>→ End-to-end ownership — I design, build, deploy, and maintain</p>
-                    <p>→ Every project ships with production security, performance tuning, and clean docs</p>
+                    <p>→ Theoretical and practical depth from <strong>Adani University</strong> (CSE, AI-ML) and <strong>IIT Madras</strong></p>
+                    <p>→ Heavy emphasis on data privacy, secure authentication, and standard compliance (FHIR, HL7)</p>
+                    <p>→ Rigorous engineering mindset: profiling latency, optimizing complexity, and writing clean, scalable documentation</p>
                   </div>
                 </div>
               </div>
@@ -304,6 +326,38 @@ export default function ContentOverlay({ activeSection, onClose }) {
                           {p.id === 2 && (
                             <img src={p.image} alt={p.title} className="project-preview-img" />
                           )}
+                          {p.id === 3 && (
+                            <div className="project-graphic-ui selene-ui">
+                              <div className="shield-ring" />
+                              <div className="shield-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                </svg>
+                              </div>
+                              <div className="crypto-logs">
+                                <div className="crypto-log-line">UUID: 4a8b-9e2c-1f5d</div>
+                                <div className="crypto-log-line encrypting">CIPHER: 8f9a2e3...</div>
+                              </div>
+                              <div className="zero-knowledge-badge">AES-256-GCM</div>
+                            </div>
+                          )}
+                          {p.id === 4 && (
+                            <div className="project-graphic-ui aion-ui">
+                              <div className="terminal-header">
+                                <span className="term-dot red" />
+                                <span className="term-dot yellow" />
+                                <span className="term-dot green" />
+                              </div>
+                              <div className="terminal-body">
+                                <div className="term-line cmd">python train_rl.py</div>
+                                <div className="term-line">Warmup: SFT Epoch 3/3 complete</div>
+                                <div className="term-line run">REINFORCE policy optimize...</div>
+                                <div className="term-line success">Reward: +1.48 (Complexity -30%)</div>
+                                <div className="term-line cursor-line">$ <span className="cursor-blink" /></div>
+                              </div>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -349,41 +403,20 @@ export default function ContentOverlay({ activeSection, onClose }) {
           {/* 6. CONTACT SECTION */}
           {activeSection === 'contact' && (
             <div className="section-container contact-container">
-              <h2 className="overlay-anim section-title">START A PROJECT</h2>
-              <p className="overlay-anim contact-sub">Ready to bring your software to life? Let's discuss your project and map out the build.</p>
+              <h2 className="overlay-anim section-title">GET IN TOUCH</h2>
+              <p className="overlay-anim contact-sub">I'm actively exploring software engineering roles, research collaborations, and systems work. Let's connect.</p>
               
-              {/* FAQ Accordion Section */}
-              <div className="overlay-anim faq-section" style={{ marginBottom: '80px' }}>
-                <h3 className="sub-label">Frequently Asked Questions</h3>
-                <div className="faq-list">
-                  {[
-                    {
-                      q: "We’ve been burned by slow development and poor communication before. How do you work?",
-                      a: "I run my freelance business like a partner, not a contractor. I work in transparent, weekly sprints. Every Friday, you receive a working preview URL of the code and a 5-minute Loom video walking you through exactly what was built and why. If there's a blocker or architectural tradeoff, we address it immediately. No black boxes, and no surprise invoices."
-                    },
-                    {
-                      q: "How do you handle security and data compliance, especially in health tech or civic spaces?",
-                      a: "Security isn't a feature you bolt on at the end; it's the foundation of the codebase. I design applications with modern security standards from Day 1. This includes zero-knowledge architectures, client-side AES-256 encryption using the Web Crypto API, strict CORS policies, token-based authentication, and structured database transactions to prevent injections and leaks."
-                    },
-                    {
-                      q: "Do I own the code once the project is finished?",
-                      a: "Yes. Upon final payment, 100% of the intellectual property, repository rights, and deployment assets are transferred to your company. I build it, but it’s completely yours."
-                    },
-                    {
-                      q: "How do you structure project pricing?",
-                      a: "I work primarily on fixed-scope project rates or weekly retainers, meaning you know exactly what your build will cost before we start. No hidden hourly fees or surprise invoices."
-                    }
-                  ].map((faq, index) => (
-                    <div key={index} className={`overlay-anim faq-item ${activeFaq === index ? 'active' : ''}`}>
-                      <button className="faq-question clickable" onClick={() => setActiveFaq(activeFaq === index ? null : index)}>
-                        <span>{faq.q}</span>
-                        <svg className="faq-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 5v14M5 12h14"/></svg>
-                      </button>
-                      <div className="faq-answer">
-                        <p>{faq.a}</p>
-                      </div>
-                    </div>
-                  ))}
+              {/* Recruiter / Resume Card */}
+              <div className="overlay-anim recruiter-box" style={{ marginBottom: '80px' }}>
+                <h3 className="sub-label">Opportunities</h3>
+                <div className="recruiter-card">
+                  <p>I specialize in building secure full-stack applications, ML integrations, and optimizing system performance. If you are looking for an engineer with a strong foundation in computer science and applied systems architecture, let's talk.</p>
+                  <div className="recruiter-actions" style={{ marginTop: '24px' }}>
+                    <a href="/resume.pdf" target="_blank" rel="noreferrer" className="recruiter-btn clickable">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{marginRight: '8px', verticalAlign: 'middle'}}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                      DOWNLOAD RESUME / CV
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -549,21 +582,56 @@ export default function ContentOverlay({ activeSection, onClose }) {
         /* Contact */
         .contact-sub{font-size:1.2rem;color:var(--white-dim);margin-bottom:60px}
         .huge-links{display:flex;flex-direction:column;gap:20px}
-        .huge-link{font-family:var(--font-display);font-size:clamp(2.5rem,8vw,6rem);font-weight:900;line-height:.9;letter-spacing:-.03em;color:var(--white);transition:color .4s}
+        .huge-link{font-family:var(--font-display);font-size:clamp(2.5rem,8vw,6rem);font-weight:900;line-height:.9;letter-spacing:-.03em;color:var(--white);transition:color .4s;text-decoration:none}
         .huge-link:hover{color:var(--accent)}
-        .contact-small-link{font-size:1.1rem;color:var(--white-dim);transition:color .3s;border-bottom:1px solid transparent}
+        .contact-small-link{font-size:1.1rem;color:var(--white-dim);transition:color .3s;border-bottom:1px solid transparent;text-decoration:none}
         .contact-small-link:hover{color:var(--white);border-color:var(--white)}
 
-        /* FAQ */
-        .faq-list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--white-ghost);margin-top:24px}
-        .faq-item{border-bottom:1px solid var(--white-ghost);overflow:hidden}
-        .faq-question{width:100%;display:flex;justify-content:between;align-items:center;padding:24px 0;text-align:left;font-family:var(--font-body);font-size:1.05rem;font-weight:500;color:var(--white);background:none;border:none;cursor:pointer;gap:20px}
-        .faq-question span{flex:1}
-        .faq-icon{transition:transform .4s var(--ease);color:var(--white-dim)}
-        .faq-item.active .faq-icon{transform:rotate(135deg);color:var(--accent)}
-        .faq-answer{height:0;opacity:0;visibility:hidden;transition:all .4s var(--ease)}
-        .faq-item.active .faq-answer{height:auto;opacity:1;visibility:visible;padding-bottom:24px}
-        .faq-answer p{font-size:.95rem;line-height:1.7;color:var(--white-dim);max-width:800px}
+        /* Recruiter Card */
+        .recruiter-card{background:rgba(255,255,255,0.02);border:1px solid var(--white-ghost);border-radius:16px;padding:32px;box-shadow:inset 0 0 20px rgba(71,191,255,0.02)}
+        .recruiter-card p{color:var(--white-dim);line-height:1.8;font-size:1.02rem;margin:0}
+        .recruiter-btn{display:inline-flex;align-items:center;background:var(--accent-secondary);color:#0a0a0a;font-family:var(--font-display);font-weight:700;font-size:0.85rem;letter-spacing:0.1em;border:none;border-radius:30px;padding:14px 28px;text-decoration:none;transition:all 0.3s var(--ease);box-shadow:0 4px 15px rgba(71,191,255,0.2)}
+        .recruiter-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(71,191,255,0.4);opacity:0.95}
+
+        /* Selene UI */
+        .selene-ui{background:linear-gradient(135deg, #0c1812 0%, #060b08 100%);color:#22c55e}
+        .shield-ring{position:absolute;width:100px;height:100px;border:1px dashed rgba(34,197,94,0.15);border-radius:50%;animation:spinOrbit 15s linear infinite}
+        .shield-icon{position:relative;z-index:2;color:#22c55e;filter:drop-shadow(0 0 8px rgba(34,197,94,0.4));animation:pulseShield 2.5s infinite ease-in-out}
+        .crypto-logs{position:absolute;bottom:12px;left:14px;right:14px;font-family:monospace;font-size:0.65rem;color:rgba(34,197,94,0.5);display:flex;flex-direction:column;gap:4px;text-align:left}
+        .crypto-log-line{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        .crypto-log-line.encrypting{animation:encryptText 1.5s infinite alternate}
+        .zero-knowledge-badge{position:absolute;top:10px;right:10px;font-family:var(--font-display);font-size:0.65rem;font-weight:700;color:#22c55e;border:1px solid rgba(34,197,94,0.2);padding:4px 8px;border-radius:6px;background:rgba(34,197,94,0.05)}
+
+        /* Aion UI */
+        .aion-ui{background:#0a0c10;color:#f0f6fc;flex-direction:column;align-items:stretch;justify-content:flex-start;padding:0;font-family:monospace}
+        .terminal-header{height:28px;background:#161b22;border-bottom:1px solid #30363d;display:flex;align-items:center;padding:0 12px;gap:6px;width:100%;box-sizing:border-box}
+        .term-dot{width:8px;height:8px;border-radius:50%}
+        .term-dot.red{background:#ff5f56}
+        .term-dot.yellow{background:#ffbd2e}
+        .term-dot.green{background:#27c93f}
+        .terminal-body{padding:14px;font-size:0.72rem;display:flex;flex-direction:column;gap:6px;line-height:1.4;text-align:left;width:100%;box-sizing:border-box}
+        .term-line{opacity:0.85}
+        .term-line.cmd{color:#58a6ff;font-weight:bold}
+        .term-line.run{color:#f0883e;animation:aionRunText 1.5s infinite alternate}
+        .term-line.success{color:#56d364}
+        .cursor-blink{display:inline-block;width:6px;height:12px;background:#f0f6fc;animation:blinkCursor 0.8s infinite;vertical-align:middle}
+
+        @keyframes pulseShield{
+          0%, 100%{transform:scale(1);opacity:0.9}
+          50%{transform:scale(1.1);opacity:1;filter:drop-shadow(0 0 14px rgba(34,197,94,0.6))}
+        }
+        @keyframes encryptText{
+          0%{color:rgba(34,197,94,0.4)}
+          100%{color:rgba(34,197,94,0.85)}
+        }
+        @keyframes aionRunText{
+          0%{opacity:0.6}
+          100%{opacity:1}
+        }
+        @keyframes blinkCursor{
+          0%, 100%{opacity:0}
+          50%{opacity:1}
+        }
 
         @media(max-width:768px){
           .close-btn{top:20px;right:24px}
