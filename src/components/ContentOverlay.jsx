@@ -446,7 +446,7 @@ export default function ContentOverlay({ activeSection, onClose }) {
       </div>
 
       <style>{`
-        .content-overlay{position:fixed;inset:0;z-index:90;background:var(--bg-overlay);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px)}
+        .content-overlay{position:fixed;inset:0;z-index:200;background:var(--bg-overlay);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px)}
         .overlay-scroll{height:100%;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
         .overlay-inner{max-width:1000px;margin:0 auto;padding:140px 48px 100px;min-height:100%}
         
