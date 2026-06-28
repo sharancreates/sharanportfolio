@@ -3,21 +3,10 @@ import gsap from 'gsap'
 
 const projectsData = [
   {
-    id: 1,
-    title: 'RESUMATCH AI',
-    stack: 'React.js · Flask · Python · ONNX · Scikit-Learn',
-    desc: 'An AI-powered ATS resume analyzer that parses keyword density, semantic intent, and formatting parameters against job descriptions. Built a hybrid lexical-semantic parsing engine (40% keyword CountVectorizer + 60% all-MiniLM-L6-v2 sentence embeddings via ONNX Runtime) that cut inference latency by 70% and achieved a 30% candidate match improvement. Uses an OrderedDict-backed LRU caching layer.',
-    link: 'https://github.com/sharancreates/resumatch',
-    demo: 'https://resumatch-cm7x.onrender.com',
-    year: '2026',
-    status: 'deployed',
-    image: '/slides/resumatch.webp'
-  },
-  {
     id: 2,
     title: 'AROGYA HMS',
-    stack: 'React 19 · Flask · PostgreSQL · Celery · Redis',
-    desc: 'A secure, interoperable Hospital Management System. Implemented an interoperability layer dynamically generating HL7 v2 ADT messages and FHIR R4 Patient resources. Decoupled heavy tasks (SMTP/PDF creation) to Celery/Redis, reducing reminder dispatch latency from 32s to 20ms. Eliminated SQL N+1 loading bottlenecks using SQLAlchemy joinedload to consolidate queries into O(1) scheduling checks.',
+    stack: 'Flask · React · Celery · Redis · PostgreSQL · Docker',
+    desc: 'Distributed hospital management system with production-grade EHR interoperability. Implemented async background tasks via Celery + Redis, supported HL7 v2 ADT and FHIR R4 clinical data exports, and secured the system across 4 role types using RBAC, rate limiting, and middleware-level controls.',
     link: 'https://github.com/sharancreates/hospital-management-system',
     medium: 'https://medium.com/@sharanyanagar/engineering-arogya-lessons-from-building-a-secure-healthcare-platform-ced0cf4ccca2',
     demo: 'https://arogya-hms-sharancreates.vercel.app/',
@@ -28,8 +17,8 @@ const projectsData = [
   {
     id: 3,
     title: 'SELENE TRACKER',
-    stack: 'React.js · Flask · Web Crypto API · SQLite',
-    desc: 'A zero-knowledge menstrual health tracker. All calculations and encryption (AES-256-GCM via browser Web Crypto API) run client-side; the server stores only opaque ciphertext linked to anonymous cryptographically random UUIDs. Built a variance-aware prediction algorithm dynamically adapting confidence windows for cycle irregularity and PCOS patterns.',
+    stack: 'Python · scikit-learn · Flask · Redis · PostgreSQL',
+    desc: 'Adaptive cycle prediction with clinical AI and zero-knowledge privacy. Trained a Random Forest model on 12,000 clinical samples achieving ±2.6 day RMSE (R² = 0.66). Secures 100% of cycle records pre-serialization using 100k PBKDF2 iterations, connection pooling, and indexed query paths.',
     link: 'https://github.com/sharancreates/selene',
     demo: '#',
     year: '2026',
@@ -39,19 +28,39 @@ const projectsData = [
   {
     id: 4,
     title: 'AION CODE REVIEWER',
-    stack: 'FastAPI · React.js · PyTorch · Transformers',
-    desc: 'A Reinforcement Learning (RL) based automated code reviewer. Trained a fine-tuned language model with REINFORCE and Supervised Fine-Tuning (SFT) to optimize syntax styling, algorithmic efficiency, and security vulnerabilities. Features a custom AST-based code execution sandbox and a multi-objective reward policy.',
+    stack: 'Python · PyTorch · Gymnasium · GPT-2 · AST · GitHub Actions',
+    desc: 'RL-trained LLM environment for autonomous code review. Achieved 0.98+ reward optimization via SFT and REINFORCE with a variance-reducing baseline. Features an AST-based grading parser, automated regression backtracking across 13 programming languages, and an execution sandbox.',
     link: 'https://github.com/Wall-E-30/code-reviewer',
+    medium: 'https://medium.com/@sharanyanagar/we-built-aion-an-ai-that-teaches-itself-to-fix-your-code-using-reinforcement-learning-57ae8564518f',
     demo: '#',
     year: '2026',
     status: 'deployed',
     image: '/slides/mern.webp'
+  },
+    {
+    id: 1,
+    title: 'RESUMATCH AI',
+    stack: 'Python · FastAPI · spaCy · sentence-transformers · PostgreSQL',
+    desc: 'Hybrid NLP engine for ATS resume-JD matching. Achieved 35% relevance improvement over keyword-only matching, 60% latency reduction (~250ms) via thread-safe LRU cache, and 95%+ entity extraction accuracy with lexical + semantic blending using custom PhraseMatcher over 100+ technical skill patterns.',
+    link: 'https://github.com/sharancreates/resumatch',
+    demo: '#',
+    year: '2026',
+    status: 'deployed',
+    image: '/slides/resumatch.webp'
   }
 ]
 
 const blogsData = [
   {
     id: 1,
+    title: 'WE BUILT AION: AN AI THAT TEACHES ITSELF TO FIX YOUR CODE USING REINFORCEMENT LEARNING',
+    stack: 'Reinforcement Learning · LLMs',
+    desc: 'How we trained a GPT-2 fine-tuned model using SFT and REINFORCE with baseline to achieve autonomous code optimization across style, algorithm speed, and security flaws.',
+    link: 'https://medium.com/@sharanyanagar/we-built-aion-an-ai-that-teaches-itself-to-fix-your-code-using-reinforcement-learning-57ae8564518f',
+    year: '2026'
+  },
+  {
+    id: 2,
     title: 'ENGINEERING AROGYA: LESSONS FROM BUILDING A SECURE HEALTHCARE PLATFORM',
     stack: 'Healthcare Tech · Full-Stack',
     desc: 'Deep dive into the architectural decisions, database query optimizations, and asynchronous background scheduling strategies implemented in Arogya HMS.',
@@ -59,7 +68,7 @@ const blogsData = [
     year: '2026'
   },
   {
-    id: 2,
+    id: 3,
     title: 'BUILDING AEGIS: A PENETRATION TESTING FRAMEWORK',
     stack: 'Cybersecurity · Automation',
     desc: 'An exploration of how I designed and engineered Aegis, a modular command-line tool automated for network scanning and vulnerability audits.',
@@ -67,7 +76,7 @@ const blogsData = [
     year: '2026'
   },
   {
-    id: 3,
+    id: 4,
     title: 'GOOGLE DORKING FOR BEGINNERS: GHOSTING THE NETWORK',
     stack: 'Cybersecurity · OSINT',
     desc: 'A comprehensive, beginner-friendly guide explaining how to leverage advanced Google search operators to run information disclosure audits.',
@@ -196,7 +205,7 @@ export default function ContentOverlay({ activeSection, onClose }) {
 
               <div className="overlay-anim cta-section">
                 <a href="mailto:sharanyanagar16@gmail.com" className="cta-btn clickable">
-                  LET'S TALK ABOUT YOUR PROJECT
+                  CONNECT WITH ME
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
               </div>
@@ -215,10 +224,14 @@ export default function ContentOverlay({ activeSection, onClose }) {
                   </div>
                 </div>
                 <div>
-                  <h3 className="sub-label">Extra-Curricular</h3>
+                  <h3 className="sub-label">Hackathons & Extra-Curricular</h3>
                   <div className="timeline-item">
-                    <h4>Social Impact — SDG 16</h4>
-                    <p>Explored and conceptualized digital solutions for Peace and Justice.</p>
+                    <h4>AETRIX 2026 — 🥈 Finalist</h4>
+                    <p>Built <strong>Pratyaksha</strong>: a satellite imagery interpreter delivering ML environment recommendations.</p>
+                  </div>
+                  <div className="timeline-item">
+                    <h4>TarkShaastra 2026</h4>
+                    <p>Built <strong>Complaint Management System</strong>: ML auto-routing matching past resolutions to new cases.</p>
                   </div>
                   <div className="timeline-item">
                     <h4>Creative Writing</h4>
@@ -234,37 +247,64 @@ export default function ContentOverlay({ activeSection, onClose }) {
             <div className="section-container">
               <h2 className="overlay-anim section-title">EXPERTISE</h2>
               
-              <div className="overlay-anim skills-group">
-                <h3 className="sub-label">Programming & Frameworks</h3>
-                <div className="skills-tags">
-                  {['React.js', 'Flask', 'Node.js', 'Python', 'Express.js', 'PostgreSQL', 'Java'].map((s, i) => (
-                    <span key={i} className="skill-tag" style={{animationDelay: `${i * 0.05}s`}}>{s}</span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="overlay-anim skills-group" style={{ marginTop: '60px' }}>
-                <h3 className="sub-label">Core Concepts</h3>
-                <div className="skills-tags">
-                  {['SaaS Architecture', 'Computer Networking', 'UI Design', 'Operating Systems'].map((s, i) => (
-                    <span key={i} className="skill-tag" style={{animationDelay: `${(i+7) * 0.05}s`}}>{s}</span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="overlay-anim grid-2" style={{ marginTop: '80px' }}>
-                <div>
-                  <h3 className="sub-label">Certificates</h3>
-                  <div className="timeline-item">
-                    <h4>Cloud Computing</h4>
-                    <p>IBM SkillsBuild</p>
+              <div className="skills-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '30px', marginBottom: '60px' }}>
+                <div className="overlay-anim skills-group">
+                  <h3 className="sub-label">Backend & Architecture</h3>
+                  <div className="skills-tags">
+                    {['Python', 'FastAPI', 'Flask', 'Node.js', 'Express.js', 'Java', 'C++'].map((s, i) => (
+                      <span key={i} className="skill-tag" style={{animationDelay: `${i * 0.03}s`}}>{s}</span>
+                    ))}
                   </div>
                 </div>
+
+                <div className="overlay-anim skills-group">
+                  <h3 className="sub-label">Frontend</h3>
+                  <div className="skills-tags">
+                    {['React', 'TypeScript', 'Next.js', 'Vue.js', 'TailwindCSS'].map((s, i) => (
+                      <span key={i} className="skill-tag" style={{animationDelay: `${(i + 7) * 0.03}s`}}>{s}</span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="overlay-anim skills-group">
+                  <h3 className="sub-label">AI / ML</h3>
+                  <div className="skills-tags">
+                    {['PyTorch', 'TensorFlow', 'scikit-learn', 'NumPy', 'Pandas'].map((s, i) => (
+                      <span key={i} className="skill-tag" style={{animationDelay: `${(i + 12) * 0.03}s`}}>{s}</span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="overlay-anim skills-group">
+                  <h3 className="sub-label">Infrastructure & Security</h3>
+                  <div className="skills-tags">
+                    {['PostgreSQL', 'Redis', 'Docker', 'Linux', 'MongoDB'].map((s, i) => (
+                      <span key={i} className="skill-tag" style={{animationDelay: `${(i + 17) * 0.03}s`}}>{s}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="overlay-anim grid-2" style={{ marginTop: '80px', borderTop: '1px solid var(--white-ghost)', paddingTop: '40px' }}>
                 <div>
-                  <h3 className="sub-label">Achievements</h3>
+                  <h3 className="sub-label">Research Interests</h3>
+                  <div className="differentiator-list">
+                    <p style={{marginBottom: '12px'}}>→ <strong>Quantum Machine Learning (QML)</strong>: Hybrid quantum-classical optimization models</p>
+                    <p style={{marginBottom: '12px'}}>→ <strong>Explainable AI (XAI)</strong>: Interpretability layers for high-stakes biomedical decisions</p>
+                    <p style={{marginBottom: '12px'}}>→ <strong>Reinforcement Learning</strong>: Policy fine-tuning, reward shaping, RLHF in production</p>
+                    <p style={{marginBottom: '12px'}}>→ <strong>Digital Forensics (DFIR)</strong>: Incident response, memory forensics, threat hunting</p>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="sub-label">Certificates & Achievements</h3>
+                  <div className="timeline-item">
+                    <h4>Cloud Computing</h4>
+                    <p>IBM SkillsBuild certifications & local deployment configurations.</p>
+                  </div>
                   <div className="timeline-item">
                     <h4>Algorithm Implementation</h4>
-                    <p>Engineered a custom resume-parsing algorithm for "ResuMatch".</p>
+                    <p>Achieved 60% latency reduction (~250ms) via custom thread-safe LRU caching architectures.</p>
                   </div>
                 </div>
               </div>

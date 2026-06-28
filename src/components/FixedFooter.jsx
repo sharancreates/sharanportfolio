@@ -26,12 +26,12 @@ export default function FixedFooter({ currentSlide, totalSlides, onDotClick, loa
       </div>
       <div className="ftr-item ftr-status">
         <span className="status-dot" />
-        Available for Projects
+        Open to Opportunities
       </div>
       <div className="ftr-item ftr-socials">
         <a href="https://linkedin.com/in/sharanya-nagar" target="_blank" rel="noreferrer">LinkedIn</a>
         <a href="https://github.com/sharancreates" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="mailto:sharanyanagar@yahoo.in">Email</a>
+        <a href="mailto:sharanyanagar16@gmail.com">Email</a>
       </div>
       <style>{`
         .site-footer-fixed{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:32px 48px;pointer-events:none}
