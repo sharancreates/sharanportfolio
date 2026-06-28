@@ -158,10 +158,10 @@ export default function ContentOverlay({ activeSection, onClose }) {
                 </div>
                 <div className="about-hero-text">
                   <p className="bio-large">
-                    I engineer secure full-stack systems, performance-tuned database schemas, and intelligent ML pipelines.
+                    I'm Sharanya Nagar. I engineer secure full-stack systems, performance-tuned database schemas, and intelligent ML pipelines.
                   </p>
                   <p className="bio-sub">
-                    I'm a software engineering student specializing in AI-ML. I focus on building robust system architectures, optimizing database latency, and implementing high-efficiency machine learning integrations.
+                    I'm a Computer Science & Engineering student specializing in AI-ML at Adani University, alongside a Diploma in Programming from IIT Madras. I focus on building robust system architectures, optimizing database latency, and implementing high-efficiency machine learning integrations.
                   </p>
                 </div>
               </div>
