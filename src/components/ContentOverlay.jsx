@@ -32,7 +32,7 @@ const projectsData = [
     desc: 'RL-trained LLM environment for autonomous code review. Achieved 0.98+ reward optimization via SFT and REINFORCE with a variance-reducing baseline. Features an AST-based grading parser, automated regression backtracking across 13 programming languages, and an execution sandbox.',
     link: 'https://github.com/Wall-E-30/code-reviewer',
     medium: 'https://medium.com/@sharanyanagar/we-built-aion-an-ai-that-teaches-itself-to-fix-your-code-using-reinforcement-learning-57ae8564518f',
-    demo: '#',
+    demo: 'https://huggingface.co/spaces/Wall-E-30/aion-code-reviewer',
     year: '2026',
     status: 'deployed',
     image: '/slides/mern.webp'
@@ -220,7 +220,7 @@ export default function ContentOverlay({ activeSection, onClose }) {
                   <div className="timeline-item">
                     <h4>Diploma in Programming</h4>
                     <p>IIT Madras</p>
-                    <span>2026 – Present</span>
+                    <span>2024 – Present</span>
                   </div>
                 </div>
                 <div>
